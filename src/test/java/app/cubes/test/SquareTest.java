@@ -8,8 +8,8 @@ import java.util.Map;
 
 import org.junit.Test;
 
-import app.cubes.models.Square;
-import app.cubes.utils.Utils;
+import app.cubes.model.Square;
+import app.cubes.util.ResolverUtils;
 
 public class SquareTest {
 
@@ -109,7 +109,7 @@ public class SquareTest {
 		
 		int countEqual = 0;
 		//search RIGHT
-		if(Utils.isEqualSide(side.getRight(), right.getLeft())) {
+		if(ResolverUtils.isEqualSide(side.getRight(), right.getLeft())) {
 			side.saveBind("right", right);
 			right.saveBind("left", side);
 			countEqual++;
@@ -117,7 +117,7 @@ public class SquareTest {
 
 		
 		//search RIGHT_NEXT
-		if(Utils.isEqualSide(right.getRight(), rightNext.getLeft())) {
+		if(ResolverUtils.isEqualSide(right.getRight(), rightNext.getLeft())) {
 			right.saveBind("right", rightNext);
 			rightNext.saveBind("left", right);
 			countEqual++;
@@ -126,8 +126,8 @@ public class SquareTest {
 	
 		
 		//search RIGHT_NEXT_NEXT
-		if(Utils.isEqualSide(rightNext.getRight(), rightNextNext.getLeft()) && 
-				Utils.isEqualSide(side.getLeft(), rightNextNext.getRight())) {
+		if(ResolverUtils.isEqualSide(rightNext.getRight(), rightNextNext.getLeft()) && 
+				ResolverUtils.isEqualSide(side.getLeft(), rightNextNext.getRight())) {
 			rightNext.saveBind("right", rightNextNext);
 			rightNextNext.saveBind("left", rightNext);
 			side.saveBind("left", rightNextNext);
@@ -137,10 +137,10 @@ public class SquareTest {
 
 		//search TOP
 
-		if(	Utils.isEqualSide(side.getTop(), top.getBottom()) && 
-			Utils.isEqualSide(right.getTop(), top.getRight()) &&
-			Utils.isEqualSideRevers(rightNext.getTop(), top.getTop()) &&
-			Utils.isEqualSideRevers(rightNextNext.getTop(), top.getLeft())  &&  
+		if(	ResolverUtils.isEqualSide(side.getTop(), top.getBottom()) && 
+			ResolverUtils.isEqualSide(right.getTop(), top.getRight()) &&
+			ResolverUtils.isEqualSideRevers(rightNext.getTop(), top.getTop()) &&
+			ResolverUtils.isEqualSideRevers(rightNextNext.getTop(), top.getLeft())  &&  
 					(side.getTop()[4]+top.getBottom()[4]+right.getLeft()[4])==1 &&
 					(right.getTop()[4]+top.getRight()[4]+rightNext.getLeft()[4]) == 1 && 
 					(rightNext.getTop()[4]+top.getTop()[0]+rightNextNext.getLeft()[4]) == 1 && 
@@ -158,10 +158,10 @@ public class SquareTest {
 			}
 		
 		//search BOTTOM
-		if(Utils.isEqualSide(side.getBottom(), bottom.getTop()) &&
-			Utils.isEqualSideRevers( right.getBottom(), bottom.getRight()) &&	
-			Utils.isEqualSideRevers( rightNext.getBottom(), bottom.getBottom()) &&
-			Utils.isEqualSide( rightNextNext.getBottom() , bottom.getLeft()) &&
+		if(ResolverUtils.isEqualSide(side.getBottom(), bottom.getTop()) &&
+			ResolverUtils.isEqualSideRevers( right.getBottom(), bottom.getRight()) &&	
+			ResolverUtils.isEqualSideRevers( rightNext.getBottom(), bottom.getBottom()) &&
+			ResolverUtils.isEqualSide( rightNextNext.getBottom() , bottom.getLeft()) &&
 					(side.getBottom()[4]+right.getLeft()[0]+bottom.getTop()[4])==1 &&
 					(right.getBottom()[4]+rightNext.getLeft()[0]+bottom.getRight()[0]) == 1 &&
 					(rightNext.getBottom()[4]+rightNextNext.getLeft()[0]+bottom.getBottom()[0]) == 1 &&

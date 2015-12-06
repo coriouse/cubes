@@ -1,6 +1,6 @@
-package app.cubes.utils;
+package app.cubes.util;
 
-public class Utils {
+public class ResolverUtils {
 	
 	public static boolean isEqualSide(int[] array1, int[]  array2) {
 		if(((array1[1]+array2[1]) == 1) && ((array1[2]+array2[2]) == 1) && ((array1[3]+array2[3]) == 1)) {

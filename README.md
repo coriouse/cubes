@@ -1,4 +1,4 @@
-#Cubes
+#Puzzle Resolver
 
 
                          Cubes Puzzle Task
